@@ -14,6 +14,9 @@ import styles from './popularjobs.style';
 //Components Imports
 import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 
+//Hooks
+import useFetch from '../../../hooks/useFetch';
+
 const Popularjobs = () => {
   const router = useRouter();
   const isLoading = false;
