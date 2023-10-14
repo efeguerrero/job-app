@@ -42,6 +42,7 @@ const Popularjobs = () => {
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
+            showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item?.job_id}
             horizontal
             contentContainerStyle={{ columnGap: SIZES.medium }}
