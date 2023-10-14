@@ -7,13 +7,13 @@ const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
   return (
     <TouchableOpacity
       style={styles.container(selectedJob, item)}
-      onPress={() => handleCardPress(item)}
+      // onPress={() => handleCardPress(item)}
     >
       <TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
         <Image
-          style={styles.logoImage}
           source={{ uri: item.employer_logo }}
           resizeMode="contain"
+          style={{ width: 40, height: 40 }}
         />
       </TouchableOpacity>
     </TouchableOpacity>
