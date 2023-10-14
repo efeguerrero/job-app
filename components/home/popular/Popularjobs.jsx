@@ -25,7 +25,7 @@ const Popularjobs = () => {
     num_pages: 1,
   });
 
-  console.log(data);
+  const handleCardPress = (item) => {};
 
   return (
     <View style={styles.container}>
@@ -47,7 +47,9 @@ const Popularjobs = () => {
             horizontal
             contentContainerStyle={{ columnGap: SIZES.medium }}
             data={data}
-            renderItem={({ item }) => <PopularJobCard item={item} />}
+            renderItem={({ item }) => (
+              <PopularJobCard item={item} handleCardPress={handleCardPress} />
+            )}
           />
         )}
       </View>
