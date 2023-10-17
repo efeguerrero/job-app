@@ -63,6 +63,14 @@ const JobDetails = () => {
         );
         break;
       case 'Responsibilities':
+        return (
+          <Specifics
+            title={activeTab}
+            points={
+              data[0].job_highlights?.Responsibilities ?? ['No data available']
+            }
+          />
+        );
         break;
 
       default:
