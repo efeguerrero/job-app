@@ -4,7 +4,7 @@ import { COLORS, FONT, SIZES } from '../../constants';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: SIZES.medium,
+    padding: SIZES.medium,
     backgroundColor: COLORS.lightWhite,
   },
   jobContainer: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
-    color: COLORS.primary,
+    color: COLORS.gray,
   },
   headerBtn: {
     fontSize: SIZES.medium,

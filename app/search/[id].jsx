@@ -47,7 +47,7 @@ const Popularjobs = () => {
       />
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Search results for : {id}</Text>
+          <Text style={styles.headerTitle}>Job results for : {id}</Text>
         </View>
         <View style={styles.jobContainer}>
           {isLoading ? (
