@@ -17,12 +17,7 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
     marginTop: 2,
   },
-  workFilters: {
-    fontFamily: FONT.bold,
-    fontSize: SIZES.medium,
-    color: COLORS.gray,
-    marginTop: 2,
-  },
+
   searchContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -57,24 +52,6 @@ const styles = StyleSheet.create({
     width: '50%',
     height: '50%',
     tintColor: COLORS.white,
-  },
-  tabsContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 12,
-    width: '100%',
-    marginTop: SIZES.xLarge,
-  },
-  tab: {
-    paddingVertical: SIZES.small / 2,
-    paddingHorizontal: SIZES.small,
-    borderRadius: SIZES.medium,
-    borderWidth: 1,
-    borderColor: COLORS.gray2,
-  },
-  tabText: {
-    fontFamily: FONT.medium,
-    color: COLORS.gray2,
   },
 });
 
