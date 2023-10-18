@@ -20,7 +20,6 @@ import {
   JobFooter,
   JobTabs,
   ScreenHeaderBtn,
-  Sepcifics,
   Specifics,
 } from '../../components';
 

@@ -19,10 +19,7 @@ const Home = () => {
   const headerHeight = useHeaderHeight();
 
   return (
-    <SafeAreaView
-      id="safearea"
-      style={{ flex: 1, backgroundColor: COLORS.lightWhite }}
-    >
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: COLORS.lightWhite },
@@ -38,7 +35,6 @@ const Home = () => {
         }}
       />
       <ScrollView
-        id="sds"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           justifyContent: 'center',
