@@ -22,6 +22,7 @@ const JobCard = ({ job, handleNavigate }) => {
         <Text numberOfLines={1} style={styles.jobName}>
           {job.job_title}
         </Text>
+        <Text style={styles.jobType}>{job.employer_name}</Text>
         <Text style={styles.jobType}>{job.job_employment_type}</Text>
       </View>
     </TouchableOpacity>
