@@ -21,9 +21,6 @@ const NearbyJobs = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Nearby Jobs</Text>
-        <TouchableOpacity>
-          <Text style={styles.headerBtn}>Show All</Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.container}>
         {isLoading ? (

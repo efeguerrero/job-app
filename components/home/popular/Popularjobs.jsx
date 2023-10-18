@@ -16,6 +16,7 @@ import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 
 //Hooks
 import useFetch from '../../../hooks/useFetch';
+import dummyData from '../../../hooks/dummyData.json';
 
 const Popularjobs = () => {
   const router = useRouter();
@@ -31,9 +32,6 @@ const Popularjobs = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Popular Jobs</Text>
-        <TouchableOpacity>
-          <Text style={styles.headerBtn}>Show All</Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.container}>
         {isLoading ? (

@@ -3,6 +3,9 @@ import axios from 'axios';
 import { RAPID_API_KEY } from '@env';
 const rapidApiKey = RAPID_API_KEY;
 
+//Dummy Data Import
+import dummyData from './dummyData.json';
+
 const useFetch = (endpoint, query) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,8 +26,9 @@ const useFetch = (endpoint, query) => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.request(options);
-      setData(res.data.data);
+      // const res = await axios.request(options);
+      //Working with dummy data first to aviot quota limit on api
+      setData(dummyData.data);
       setIsLoading(false);
     } catch (error) {
       setError(error);
