@@ -12,7 +12,12 @@ import { COLORS, icons } from '../../constants';
 import styles from './searchResults.style';
 
 //Expo Router Imports
-import { Stack, useRouter, useGlobalSearchParams } from 'expo-router';
+import {
+  Stack,
+  useRouter,
+  useLocalSearchParams,
+  useGlobalSearchParams,
+} from 'expo-router';
 
 //Components Imports
 import JobCard from '../../components/common/cards/JobCard';
@@ -23,9 +28,14 @@ import useJobStore from '../../store/store';
 
 const Popularjobs = () => {
   const router = useRouter();
-  const { id } = useGlobalSearchParams();
+  const { id } = useLocalSearchParams();
   const jobsData = useJobStore((state) => state.jobsData);
   const isLoading = useJobStore((state) => state.isLoading);
+  const getJobData = useJobStore((state) => state.getJobData);
+
+  useEffect(() => {
+    getJobData(id);
+  }, [id]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

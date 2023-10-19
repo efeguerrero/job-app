@@ -13,15 +13,12 @@ import TabContainer from '../../common/tabs/TabContainer';
 import styles from './welcome.style';
 import { icons } from '../../../constants';
 
-//Store Import
-import useJobStore from '../../../store/store';
-
 const popularRoles = ['Full-Stack', 'Backend', 'Frontend', 'DevOps'];
 const popularTech = ['React', 'Python', 'Javascript', 'Java', 'Golang'];
 
 const Welcome = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const getJobData = useJobStore((state) => state.getJobData);
+
   const router = useRouter();
 
   return (
@@ -43,7 +40,6 @@ const Welcome = () => {
           style={styles.searchBtn}
           onPress={() => {
             if (searchTerm) {
-              getJobData(searchTerm);
               router.push(`search/${searchTerm}`);
               setSearchTerm('');
             }
