@@ -10,12 +10,8 @@ import styles from './tabsContainer.style';
 //Constant Imports
 import { SIZES } from '../../../constants';
 
-//Store Import
-import useJobStore from '../../../store/store';
-
 const TabContainer = ({ title, data }) => {
   const router = useRouter();
-  const getJobData = useJobStore((state) => state.getJobData);
 
   return (
     <View style={styles.tabsContainer}>
@@ -35,7 +31,6 @@ const TabContainer = ({ title, data }) => {
             key={item + index}
             style={styles.tab}
             onPress={() => {
-              getJobData(item);
               router.push(`/search/${item}`);
             }}
           >
