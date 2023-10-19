@@ -7,10 +7,6 @@ const rapidApiKey = RAPID_API_KEY;
 import dummyData from './dummyData.json';
 
 const useFetch = (endpoint, query) => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
   const options = {
     method: 'GET',
     url: `https://jsearch.p.rapidapi.com/${endpoint}`,

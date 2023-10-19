@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import {
   View,
   Text,
@@ -16,17 +18,19 @@ import { Stack, useRouter, useGlobalSearchParams } from 'expo-router';
 import JobCard from '../../components/common/cards/JobCard';
 import HeaderBtn from '../../components/common/header/HeaderBtn';
 
-//Hooks
-import useFetch from '../../hooks/useFetch';
+//Store Import
+import useJobStore from '../../store/store';
 
 const Popularjobs = () => {
   const router = useRouter();
   const { id } = useGlobalSearchParams();
+  const jobData = useJobStore((state) => state.jobData);
+  const isLoading = useJobStore((state) => state.isLoading);
+  const getJobData = useJobStore((state) => state.getJobData);
 
-  const { data, isLoading, error } = useFetch('search', {
-    query: 'sdfs',
-    num_pages: 1,
-  });
+  useEffect(() => {
+    getJobData(id);
+  }, [id]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -52,10 +56,8 @@ const Popularjobs = () => {
         <View style={styles.jobContainer}>
           {isLoading ? (
             <ActivityIndicator size="large" colors={COLORS.primary} />
-          ) : error ? (
-            <Text>Something went wrong</Text>
           ) : (
-            data?.map((job) => (
+            jobData?.map((job) => (
               <JobCard
                 job={job}
                 key={`nearby-job-${job?.job_id}`}
