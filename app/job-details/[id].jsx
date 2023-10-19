@@ -14,20 +14,20 @@ import {
 import { Stack, useRouter, useGlobalSearchParams } from 'expo-router';
 
 //Components Imports
+import HeaderBtn from '../../components/common/header/HeaderBtn';
 import {
   Company,
   JobAbout,
   JobFooter,
   JobTabs,
-  ScreenHeaderBtn,
   Specifics,
 } from '../../components';
 
 //Constants
 import { COLORS, icons, SIZES } from '../../constants';
 
-//Hooks
-import useFetch from '../../hooks/useFetch';
+//Store Import
+import useJobStore from '../../store/store';
 
 const tabs = ['About', 'Qualifications', 'Responsibilities'];
 
@@ -36,9 +36,11 @@ const JobDetails = () => {
   const params = useGlobalSearchParams();
   const router = useRouter();
 
-  const { data, isLoading, error, refetch } = useFetch('job-details', {
-    job_id: params.id,
-  });
+  const jobsData = useJobStore((state) => state.jobsData);
+
+  const selectedJob = jobsData.find((job) => job.job_id === params.id);
+
+  console.log(selectedJob);
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -51,14 +53,16 @@ const JobDetails = () => {
           <Specifics
             title={activeTab}
             points={
-              data[0].job_highlights?.Qualifications ?? ['No data available']
+              selectedJob.job_highlights?.Qualifications ?? [
+                'No data available',
+              ]
             }
           />
         );
         break;
       case 'About':
         return (
-          <JobAbout info={data[0].job_description ?? 'No data available'} />
+          <JobAbout info={selectedJob.job_description ?? 'No data available'} />
         );
         break;
       case 'Responsibilities':
@@ -66,7 +70,9 @@ const JobDetails = () => {
           <Specifics
             title={activeTab}
             points={
-              data[0].job_highlights?.Responsibilities ?? ['No data available']
+              selectedJob.job_highlights?.Responsibilities ?? [
+                'No data available',
+              ]
             }
           />
         );
@@ -85,11 +91,9 @@ const JobDetails = () => {
           headerStyle: { backgroundColor: COLORS.lightWhite },
           title: '',
           headerBackVisible: false,
-          headerRight: () => (
-            <ScreenHeaderBtn icon={icons.share} dimension="60%" />
-          ),
+          headerRight: () => <HeaderBtn icon={icons.share} dimension="60%" />,
           headerLeft: () => (
-            <ScreenHeaderBtn
+            <HeaderBtn
               icon={icons.left}
               dimension="60%"
               handlePress={() => router.back()}
@@ -104,19 +108,13 @@ const JobDetails = () => {
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
         >
-          {isLoading ? (
-            <ActivityIndicator size="large" color={COLORS.primary} />
-          ) : error ? (
-            <Text>Something went wrong...</Text>
-          ) : data.length === 0 ? (
-            <Text>No data found</Text>
-          ) : (
+          {selectedJob ? (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
               <Company
-                companyLogo={data[0].employer_logo}
-                jobTitle={data[0].job_title}
-                companyName={data[0].employer_name}
-                location={data[0].job_country}
+                companyLogo={selectedJob.employer_logo}
+                jobTitle={selectedJob.job_title}
+                companyName={selectedJob.employer_name}
+                location={selectedJob.job_country}
               />
               <JobTabs
                 tabs={tabs}
@@ -125,11 +123,13 @@ const JobDetails = () => {
               />
               {displayTabContent()}
             </View>
+          ) : (
+            <Text>No data found</Text>
           )}
         </ScrollView>
         <JobFooter
           url={
-            data[0]?.job_google_link ??
+            selectedJob?.job_google_link ??
             'https://careers.google.com/jobs/results'
           }
         />

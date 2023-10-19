@@ -24,7 +24,7 @@ import useJobStore from '../../store/store';
 const Popularjobs = () => {
   const router = useRouter();
   const { id } = useGlobalSearchParams();
-  const jobData = useJobStore((state) => state.jobData);
+  const jobsData = useJobStore((state) => state.jobsData);
   const isLoading = useJobStore((state) => state.isLoading);
   const getJobData = useJobStore((state) => state.getJobData);
 
@@ -57,7 +57,7 @@ const Popularjobs = () => {
           {isLoading ? (
             <ActivityIndicator size="large" colors={COLORS.primary} />
           ) : (
-            jobData?.map((job) => (
+            jobsData?.map((job) => (
               <JobCard
                 job={job}
                 key={`nearby-job-${job?.job_id}`}

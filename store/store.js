@@ -8,7 +8,7 @@ const rapidApiKey = RAPID_API_KEY;
 import dummyData from './dummyData.json';
 
 const useJobStore = create((set) => ({
-  jobData: [],
+  jobsData: [],
   isLoading: false,
   getJobData: ({ endpoint, query }) =>
     set(async () => {
@@ -28,13 +28,13 @@ const useJobStore = create((set) => ({
       try {
         // const res = await axios.request(options);
         //Working with dummy data first to aviot quota limit on api
-        set(() => ({ jobData: dummyData.data }));
+        set(() => ({ jobsData: dummyData.data }));
         set(() => ({ isLoading: false }));
       } catch (error) {
         alert(
           'There was an error fetching the data or API quota limit was reached. You will see stale data so that you can showcase the app anyway.'
         );
-        set(() => ({ jobData: dummyData.data }));
+        set(() => ({ jobsData: dummyData.data }));
         console.log(error);
       } finally {
         set(() => ({ isLoading: false }));
