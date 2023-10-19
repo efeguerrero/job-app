@@ -9,6 +9,13 @@ import { icons } from '../../../constants';
 const Footer = ({ url }) => {
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.bookmarkBtnContainer}>
+        <Image
+          source={icons.bookmark}
+          resizeMode="cover"
+          style={styles.bookmarkBtn}
+        />
+      </TouchableOpacity>
       <TouchableOpacity
         style={styles.applyBtn}
         onPress={() => Linking.openURL(url)}
@@ -18,5 +25,4 @@ const Footer = ({ url }) => {
     </View>
   );
 };
-
 export default Footer;

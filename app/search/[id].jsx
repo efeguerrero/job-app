@@ -12,12 +12,7 @@ import { COLORS, icons } from '../../constants';
 import styles from './searchResults.style';
 
 //Expo Router Imports
-import {
-  Stack,
-  useRouter,
-  useLocalSearchParams,
-  useGlobalSearchParams,
-} from 'expo-router';
+import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 
 //Components Imports
 import JobCard from '../../components/common/cards/JobCard';

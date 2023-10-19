@@ -1,17 +1,10 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 
 //React Native Imports
-import {
-  Text,
-  View,
-  SafeAreaView,
-  ScrollView,
-  ActivityIndicator,
-  RefreshControl,
-} from 'react-native';
+import { Text, View, SafeAreaView, ScrollView } from 'react-native';
 
 //Expo Router Imports
-import { Stack, useRouter, useGlobalSearchParams } from 'expo-router';
+import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 
 //Components Imports
 import HeaderBtn from '../../components/common/header/HeaderBtn';
@@ -33,18 +26,12 @@ const tabs = ['About', 'Qualifications', 'Responsibilities'];
 
 const JobDetails = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const params = useGlobalSearchParams();
+  const params = useLocalSearchParams();
   const router = useRouter();
 
   const jobsData = useJobStore((state) => state.jobsData);
 
   const selectedJob = jobsData.find((job) => job.job_id === params.id);
-
-  console.log(selectedJob);
-
-  const [refreshing, setRefreshing] = useState(false);
-
-  const onRefresh = () => {};
 
   const displayTabContent = () => {
     switch (activeTab) {
@@ -59,12 +46,12 @@ const JobDetails = () => {
             }
           />
         );
-        break;
+
       case 'About':
         return (
           <JobAbout info={selectedJob.job_description ?? 'No data available'} />
         );
-        break;
+
       case 'Responsibilities':
         return (
           <Specifics
@@ -76,7 +63,6 @@ const JobDetails = () => {
             }
           />
         );
-        break;
 
       default:
         break;
@@ -102,12 +88,7 @@ const JobDetails = () => {
         }}
       />
       <>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
-        >
+        <ScrollView showsVerticalScrollIndicator={false}>
           {selectedJob ? (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
               <Company
