@@ -1,5 +1,10 @@
+import { useState } from 'react';
+
 //React Native Imports
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+
+//Expo Router Imports
+import { useRouter } from 'expo-router';
 
 //Component Imports
 import TabContainer from '../../common/tabs/TabContainer';
@@ -8,10 +13,17 @@ import TabContainer from '../../common/tabs/TabContainer';
 import styles from './welcome.style';
 import { icons } from '../../../constants';
 
+//Store Import
+import useJobStore from '../../../store/store';
+
 const popularRoles = ['Full-Stack', 'Backend', 'Frontend', 'DevOps'];
 const popularTech = ['React', 'Python', 'Javascript', 'Java', 'Golang'];
 
-const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
+const Welcome = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const getJobData = useJobStore((state) => state.getJobData);
+  const router = useRouter();
+
   return (
     <View>
       <View style={styles.container}>
@@ -30,7 +42,11 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
         <TouchableOpacity
           style={styles.searchBtn}
           onPress={() => {
-            handleClick();
+            if (searchTerm) {
+              getJobData(searchTerm);
+              router.push(`search/${searchTerm}`);
+              setSearchTerm('');
+            }
           }}
         >
           <Image

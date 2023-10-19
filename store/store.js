@@ -10,19 +10,21 @@ import dummyData from './dummyData.json';
 const useJobStore = create((set) => ({
   jobsData: [],
   isLoading: false,
-  getJobData: ({ endpoint, query }) =>
+  getJobData: ({ query }) =>
     set(async () => {
       const options = {
         method: 'GET',
-        url: `https://jsearch.p.rapidapi.com/${endpoint}`,
+        url: `https://jsearch.p.rapidapi.com/search`,
         headers: {
           'X-RapidAPI-Key': rapidApiKey,
           'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
         },
         params: {
-          ...query,
+          query: query,
         },
       };
+
+      console.log('get job data runned');
 
       set(() => ({ isLoading: true }));
       try {

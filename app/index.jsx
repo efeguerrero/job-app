@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
 //React Native imports
 import { View, Text, SafeAreaView, ScrollView, Linking } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
+import { Stack } from 'expo-router';
 import { useHeaderHeight } from '@react-navigation/elements';
 
 //Constants
@@ -14,8 +12,6 @@ import HeaderBtn from '../components/common/header/HeaderBtn';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home = () => {
-  const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState('');
   const headerHeight = useHeaderHeight();
 
   return (
@@ -49,16 +45,7 @@ const Home = () => {
             justifyContent: 'center',
           }}
         >
-          <Welcome
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            handleClick={() => {
-              if (searchTerm) {
-                router.push(`search/${searchTerm}`);
-                setSearchTerm('');
-              }
-            }}
-          />
+          <Welcome />
         </View>
       </ScrollView>
       <View

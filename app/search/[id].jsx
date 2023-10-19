@@ -26,11 +26,6 @@ const Popularjobs = () => {
   const { id } = useGlobalSearchParams();
   const jobsData = useJobStore((state) => state.jobsData);
   const isLoading = useJobStore((state) => state.isLoading);
-  const getJobData = useJobStore((state) => state.getJobData);
-
-  useEffect(() => {
-    getJobData(id);
-  }, [id]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
