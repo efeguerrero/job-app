@@ -50,7 +50,7 @@ const useSavedJobsStore = create((set) => ({
   getSavedJobs: async () => {
     set({ savedJobs: await getJobData() });
   },
-  setSavedJobs: async (job) => {
+  setSavedJob: async (job) => {
     const savedJobs = useSavedJobsStore.getState().savedJobs;
 
     const findJobInSaved = savedJobs.find(
@@ -66,6 +66,12 @@ const useSavedJobsStore = create((set) => ({
     } else {
       console.log('job was already saved in favs');
     }
+  },
+  removeSavedJob: async (job) => {
+    const savedJobs = useSavedJobsStore.getState().savedJobs;
+    const newSavedJobs = savedJobs.filter((item) => job.job_id !== item.job_id);
+    await storeJobData(JSON.stringify(newSavedJobs));
+    set({ savedJobs: newSavedJobs });
   },
 }));
 

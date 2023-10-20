@@ -10,14 +10,15 @@ import { Stack, useRouter } from 'expo-router';
 import HeaderBtn from '../../components/common/header/HeaderBtn';
 import JobCard from '../../components/common/cards/JobCard';
 
-//import dummy data
-import dummyData from '../../store/dummyData.json';
+//Store Imports
+import { useSavedJobsStore } from '../../store/store';
 
 //Constant Imports
 import { COLORS, icons, FONT, SIZES } from '../../constants';
 
 const Favorites = () => {
-  const jobsData = dummyData.data;
+  const savedJobs = useSavedJobsStore((state) => state.savedJobs);
+
   const router = useRouter();
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -41,7 +42,7 @@ const Favorites = () => {
           <Text style={styles.headerTitle}>Your saved jobs</Text>
         </View>
         <View style={styles.jobContainer}>
-          {jobsData?.map((job) => (
+          {savedJobs?.map((job) => (
             <JobCard
               job={job}
               key={`nearby-job-${job?.job_id}`}

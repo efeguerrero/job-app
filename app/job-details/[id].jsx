@@ -31,7 +31,8 @@ const JobDetails = () => {
 
   const jobsData = useJobStore((state) => state.jobsData);
   const selectedJob = jobsData.find((job) => job.job_id === params.id);
-  const setSavedJobs = useSavedJobsStore((state) => state.setSavedJobs);
+  const setSavedJob = useSavedJobsStore((state) => state.setSavedJob);
+  const removeSavedJob = useSavedJobsStore((state) => state.removeSavedJob);
 
   const displayTabContent = () => {
     switch (activeTab) {
@@ -109,7 +110,9 @@ const JobDetails = () => {
           )}
         </ScrollView>
         <JobFooter
-          handleSaveJob={() => setSavedJobs(selectedJob)}
+          jobId={params.id}
+          handleSaveJob={() => setSavedJob(selectedJob)}
+          handleRemoveJob={() => removeSavedJob(selectedJob)}
           url={
             selectedJob?.job_google_link ??
             'https://careers.google.com/jobs/results'
