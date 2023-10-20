@@ -6,12 +6,16 @@ import { useHeaderHeight } from '@react-navigation/elements';
 //Constants
 import { COLORS, icons, SIZES, FONT } from '../constants';
 
+//Expo Router Imports
+import { useRouter } from 'expo-router';
+
 //Components Imports
 import { Welcome } from '../components';
 import HeaderBtn from '../components/common/header/HeaderBtn';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home = () => {
+  const router = useRouter();
   const headerHeight = useHeaderHeight();
 
   return (
@@ -26,6 +30,7 @@ const Home = () => {
               icon={icons.bookmark}
               dimension="60%"
               color={COLORS.gray}
+              handlePress={() => router.push('/favorites/')}
             />
           ),
         }}
