@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-import { COLORS, FONT, SIZES } from '../../../constants';
+import { COLORS, FONT, SIZES, SHADOWS } from '../../../constants';
 
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: SIZES.medium,
-    paddingVertical: SIZES.small,
+    paddingVertical: SIZES.large,
     backgroundColor: COLORS.secondary,
     flexDirection: 'row',
     justifyContent: 'space-between',
