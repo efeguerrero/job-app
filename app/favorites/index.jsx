@@ -39,7 +39,9 @@ const Favorites = () => {
       />
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Your saved jobs</Text>
+          <Text style={styles.headerTitle}>
+            {savedJobs.length ? 'Your saved jobs' : 'There are no saved jobs.'}
+          </Text>
         </View>
         <View style={styles.jobContainer}>
           {savedJobs?.map((job) => (
