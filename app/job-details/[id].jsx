@@ -20,7 +20,7 @@ import {
 import { COLORS, icons, SIZES } from '../../constants';
 
 //Store Import
-import useJobStore from '../../store/store';
+import { useJobStore, useSavedJobsStore } from '../../store/store';
 
 const tabs = ['About', 'Qualifications', 'Responsibilities'];
 
@@ -30,8 +30,8 @@ const JobDetails = () => {
   const router = useRouter();
 
   const jobsData = useJobStore((state) => state.jobsData);
-
   const selectedJob = jobsData.find((job) => job.job_id === params.id);
+  const setSavedJobs = useSavedJobsStore((state) => state.setSavedJobs);
 
   const displayTabContent = () => {
     switch (activeTab) {
@@ -109,6 +109,7 @@ const JobDetails = () => {
           )}
         </ScrollView>
         <JobFooter
+          handleSaveJob={() => setSavedJobs(selectedJob)}
           url={
             selectedJob?.job_google_link ??
             'https://careers.google.com/jobs/results'

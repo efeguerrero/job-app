@@ -7,6 +7,9 @@ const rapidApiKey = RAPID_API_KEY;
 //Dummy Data Import
 import dummyData from './dummyData.json';
 
+//Async Storage Hooks Import
+import { getJobData, storeJobData } from '../hooks/setStorage';
+
 const useJobStore = create((set) => ({
   jobsData: [],
   isLoading: false,
@@ -23,8 +26,6 @@ const useJobStore = create((set) => ({
           query: query,
         },
       };
-
-      console.log('get job data runned');
 
       set(() => ({ isLoading: true }));
       try {
@@ -44,4 +45,16 @@ const useJobStore = create((set) => ({
     }),
 }));
 
-export default useJobStore;
+const useSavedJobsStore = create((set) => ({
+  savedJobs: [],
+  getSavedJobs: async () => {
+    set({ savedJobs: await getJobData() });
+  },
+  setSavedJobs: async (job) => {
+    console.log('saving job');
+    await storeJobData(JSON.stringify([job]));
+    set((state) => ({ savedJobs: [...state.savedJobs, job] }));
+  },
+}));
+
+export { useJobStore, useSavedJobsStore };

@@ -9,14 +9,28 @@ import { COLORS, icons, SIZES, FONT } from '../constants';
 //Expo Router Imports
 import { useRouter } from 'expo-router';
 
+//Store Import
+import { useSavedJobsStore } from '../store/store';
+
 //Components Imports
 import { Welcome } from '../components';
 import HeaderBtn from '../components/common/header/HeaderBtn';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useEffect } from 'react';
 
 const Home = () => {
   const router = useRouter();
   const headerHeight = useHeaderHeight();
+  const getSavedJobs = useSavedJobsStore((state) => state.getSavedJobs);
+  const savedJobs = useSavedJobsStore((state) => state.savedJobs);
+
+  useEffect(() => {
+    getSavedJobs();
+  }, []);
+
+  useEffect(() => {
+    console.log('saved jobs', savedJobs);
+  });
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>

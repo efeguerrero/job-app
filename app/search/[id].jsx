@@ -19,7 +19,7 @@ import JobCard from '../../components/common/cards/JobCard';
 import HeaderBtn from '../../components/common/header/HeaderBtn';
 
 //Store Import
-import useJobStore from '../../store/store';
+import { useJobStore } from '../../store/store';
 
 const Popularjobs = () => {
   const router = useRouter();

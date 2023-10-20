@@ -6,10 +6,13 @@ import styles from './footer.style';
 //Constants imports
 import { icons } from '../../../constants';
 
-const Footer = ({ url }) => {
+const Footer = ({ url, handleSaveJob }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.bookmarkBtnContainer}>
+      <TouchableOpacity
+        style={styles.bookmarkBtnContainer}
+        onPress={handleSaveJob}
+      >
         <Image
           source={icons.bookmark}
           resizeMode="cover"
