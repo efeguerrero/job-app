@@ -35,7 +35,7 @@ const Footer = ({ url, handleSaveJob, jobId, handleRemoveJob }) => {
           onPress={handleSaveJob}
         >
           <Image
-            source={icons.bookmark}
+            source={icons.bookmarkOutline}
             resizeMode="cover"
             style={styles.bookmarkBtn}
           />

@@ -2,10 +2,12 @@ import search from '../assets/icons/search.png';
 import left from '../assets/icons/left.png';
 import share from '../assets/icons/share.png';
 import location from '../assets/icons/location.png';
-import bookmark from '../assets/icons/bookmark.png';
+import bookmarkOutline from '../assets/icons/bookmarkOutline.png';
+import bookmarkFilled from '../assets/icons/bookmarkFilled.png';
 
 export default {
-  bookmark,
+  bookmarkOutline,
+  bookmarkFilled,
   search,
   left,
   share,
