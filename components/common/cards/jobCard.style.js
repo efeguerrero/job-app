@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   jobName: {
     fontSize: SIZES.medium,
     fontFamily: 'DMBold',
-    color: COLORS.primary,
+    color: COLORS.gray,
   },
   jobType: {
     fontSize: SIZES.small + 2,
