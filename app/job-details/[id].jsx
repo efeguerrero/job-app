@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 //React Native Imports
-import { Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, Share } from 'react-native';
 
 //Expo Router Imports
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
@@ -70,6 +70,19 @@ const JobDetails = () => {
     }
   };
 
+  //Sharing Async Function Definition
+  const onShare = async () => {
+    console.log('object');
+    try {
+      await Share.share({
+        message:
+          'React Native | A framework for building native apps using React',
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
@@ -78,7 +91,13 @@ const JobDetails = () => {
           headerStyle: { backgroundColor: COLORS.lightWhite },
           title: '',
           headerBackVisible: false,
-          headerRight: () => <HeaderBtn icon={icons.share} dimension="60%" />,
+          headerRight: () => (
+            <HeaderBtn
+              icon={icons.share}
+              dimension="60%"
+              handlePress={() => onShare()}
+            />
+          ),
           headerLeft: () => (
             <HeaderBtn
               icon={icons.left}
