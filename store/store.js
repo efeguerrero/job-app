@@ -13,8 +13,10 @@ import { getJobData, storeJobData } from '../hooks/setStorage';
 const useJobStore = create((set) => ({
   jobsData: [],
   isLoading: false,
-  getJobData: ({ query }) =>
+  isError: false,
+  getJobData: (query) =>
     set(async () => {
+      console.log('Get Data Runned');
       const options = {
         method: 'GET',
         url: `https://jsearch.p.rapidapi.com/search`,
@@ -30,13 +32,12 @@ const useJobStore = create((set) => ({
       set(() => ({ isLoading: true }));
       try {
         // const res = await axios.request(options);
-        //Working with dummy data first to aviot quota limit on api
-        set(() => ({ jobsData: dummyData.data }));
+        console.log(res.data.data);
+        set(() => ({ jobsData: res.data.data }));
         set(() => ({ isLoading: false }));
       } catch (error) {
-        alert(
-          'There was an error fetching the data or API quota limit was reached. You will see stale data so that you can showcase the app anyway.'
-        );
+        //In case API has met it's quota or there was an error, you will see an alert that you will be seeing stale data just to showcase App
+        set({ isError: true });
         set(() => ({ jobsData: dummyData.data }));
         //console.log(error);
       } finally {

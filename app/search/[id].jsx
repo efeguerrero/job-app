@@ -6,6 +6,7 @@ import {
   ScrollView,
   ActivityIndicator,
   SafeAreaView,
+  Alert,
 } from 'react-native';
 
 import { COLORS, icons } from '../../constants';
@@ -26,7 +27,15 @@ const Popularjobs = () => {
   const { id } = useLocalSearchParams();
   const jobsData = useJobStore((state) => state.jobsData);
   const isLoading = useJobStore((state) => state.isLoading);
+  const isError = useJobStore((state) => state.isError);
   const getJobData = useJobStore((state) => state.getJobData);
+
+  const createAlert = () =>
+    Alert.alert(
+      'Error',
+      'There was an error retrieving the data. You will see stale jobs so that you can showcase the app anyway. Please try again later',
+      [{ text: 'OK', onPress: () => console.log('OK Pressed') }]
+    );
 
   useEffect(() => {
     getJobData(id);
@@ -53,7 +62,9 @@ const Popularjobs = () => {
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Job results for : {id}</Text>
         </View>
+
         <View style={styles.jobContainer}>
+          {isError && createAlert()}
           {isLoading ? (
             <ActivityIndicator size="large" colors={COLORS.primary} />
           ) : (
