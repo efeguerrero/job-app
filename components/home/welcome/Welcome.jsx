@@ -11,7 +11,7 @@ import TabContainer from '../../common/tabs/TabContainer';
 
 //Styles and Constants Imports
 import styles from './welcome.style';
-import { icons } from '../../../constants';
+import { icons, COLORS } from '../../../constants';
 
 const popularRoles = ['Full-Stack', 'Backend', 'Frontend', 'DevOps'];
 const popularTech = ['React', 'Python', 'Javascript', 'Java', 'Golang'];
@@ -20,6 +20,13 @@ const Welcome = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const router = useRouter();
+
+  const handleSearch = () => {
+    if (searchTerm) {
+      router.push(`search/${searchTerm}`);
+      setSearchTerm('');
+    }
+  };
 
   return (
     <View>
@@ -30,6 +37,10 @@ const Welcome = () => {
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
           <TextInput
+            onSubmitEditing={() => handleSearch()}
+            enterKeyHint="search"
+            inputMode="search"
+            cursorColor={COLORS.tertiary}
             style={styles.searchInput}
             onChangeText={(text) => setSearchTerm(text)}
             placeholder="What are you looking for?"
@@ -38,12 +49,7 @@ const Welcome = () => {
         </View>
         <TouchableOpacity
           style={styles.searchBtn}
-          onPress={() => {
-            if (searchTerm) {
-              router.push(`search/${searchTerm}`);
-              setSearchTerm('');
-            }
-          }}
+          onPress={() => handleSearch()}
         >
           <Image
             source={icons.search}
