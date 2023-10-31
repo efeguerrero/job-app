@@ -30,7 +30,11 @@ const JobDetails = () => {
   const router = useRouter();
 
   const jobsData = useJobStore((state) => state.jobsData);
-  const selectedJob = jobsData.find((job) => job.job_id === params.id);
+  const savedJobs = useSavedJobsStore((state) => state.savedJobs);
+  //The selected job detail we are looking for is either from jobsData (search result) or from saved jobs. So we check boths and use that.
+  const selectedJob =
+    jobsData.find((job) => job.job_id === params.id) ||
+    savedJobs.find((job) => job.job_id === params.id);
   const setSavedJob = useSavedJobsStore((state) => state.setSavedJob);
   const removeSavedJob = useSavedJobsStore((state) => state.removeSavedJob);
 
@@ -128,7 +132,7 @@ const JobDetails = () => {
               {displayTabContent()}
             </View>
           ) : (
-            <Text>No data found</Text>
+            <Text>No job data found</Text>
           )}
         </ScrollView>
         <JobFooter
