@@ -16,7 +16,7 @@ const AppLayout = () => {
   //Dont re run between renders. Only when fontsLoaded changes
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+      setTimeout(await SplashScreen.hideAsync(), 2000);
     }
   }, [fontsLoaded]);
 
