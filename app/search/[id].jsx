@@ -34,7 +34,7 @@ const Popularjobs = () => {
     Alert.alert(
       'Error',
       'There was an error retrieving the data. You will see stale jobs so that you can showcase the app anyway. Please try again later',
-      [{ text: 'OK', onPress: () => console.log('OK Pressed') }]
+      [{ text: 'OK', onPress: () => console.log('') }]
     );
 
   useEffect(() => {

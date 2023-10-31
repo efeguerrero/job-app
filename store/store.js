@@ -16,7 +16,6 @@ const useJobStore = create((set) => ({
   isError: false,
   getJobData: (query) =>
     set(async () => {
-      console.log('Get Data Runned');
       const options = {
         method: 'GET',
         url: `https://jsearch.p.rapidapi.com/search`,
@@ -31,8 +30,8 @@ const useJobStore = create((set) => ({
 
       set(() => ({ isLoading: true }));
       try {
-        // const res = await axios.request(options);
-        console.log(res.data.data);
+        const res = await axios.request(options);
+
         set(() => ({ jobsData: res.data.data }));
         set(() => ({ isLoading: false }));
       } catch (error) {
