@@ -17,7 +17,7 @@ const Footer = ({ url, handleSaveJob, jobId, handleRemoveJob }) => {
     : false;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.elevation]}>
       {isJobSaved ? (
         <TouchableOpacity
           style={styles.bookmarkBtnContainer}

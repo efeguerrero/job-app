@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+
   bookmarkBtnContainer: {
     width: 40,
     height: 40,
