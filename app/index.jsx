@@ -3,6 +3,9 @@ import { View, Text, SafeAreaView, ScrollView, Linking } from 'react-native';
 import { Stack } from 'expo-router';
 import { useHeaderHeight } from '@react-navigation/elements';
 
+//Expo Status Bar
+import { StatusBar } from 'expo-status-bar';
+
 //Constants
 import { COLORS, icons, SIZES, FONT } from '../constants';
 
@@ -22,7 +25,6 @@ const Home = () => {
   const router = useRouter();
   const headerHeight = useHeaderHeight();
   const getSavedJobs = useSavedJobsStore((state) => state.getSavedJobs);
-  const savedJobs = useSavedJobsStore((state) => state.savedJobs);
 
   useEffect(() => {
     getSavedJobs();
@@ -30,6 +32,7 @@ const Home = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+      <StatusBar style="dark" />
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: COLORS.lightWhite },
