@@ -75,8 +75,12 @@ const JobDetails = () => {
     console.log('object');
     try {
       await Share.share({
+        url:
+          selectedJob?.job_google_link ??
+          'https://careers.google.com/jobs/results',
         message:
-          'React Native | A framework for building native apps using React',
+          selectedJob?.job_google_link ??
+          'https://careers.google.com/jobs/results',
       });
     } catch (error) {
       console.log(error);
