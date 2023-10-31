@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
-    color: COLORS.gray,
+    color: COLORS.primary,
   },
 });
 
