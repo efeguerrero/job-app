@@ -38,7 +38,7 @@ const useJobStore = create((set) => ({
           'There was an error fetching the data or API quota limit was reached. You will see stale data so that you can showcase the app anyway.'
         );
         set(() => ({ jobsData: dummyData.data }));
-        console.log(error);
+        //console.log(error);
       } finally {
         set(() => ({ isLoading: false }));
       }
@@ -64,7 +64,7 @@ const useSavedJobsStore = create((set) => ({
       await storeJobData(JSON.stringify(newSavedJobs));
       set({ savedJobs: newSavedJobs });
     } else {
-      console.log('job was already saved in favs');
+      //console.log('job was already saved in favs');
     }
   },
   removeSavedJob: async (job) => {

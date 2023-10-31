@@ -72,7 +72,6 @@ const JobDetails = () => {
 
   //Sharing Async Function Definition
   const onShare = async () => {
-    console.log('object');
     try {
       await Share.share({
         url:
@@ -83,7 +82,7 @@ const JobDetails = () => {
           'https://careers.google.com/jobs/results',
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

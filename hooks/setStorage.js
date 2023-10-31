@@ -5,7 +5,7 @@ const storeJobData = async (value) => {
   try {
     await AsyncStorage.setItem('savedJobs', value);
   } catch (e) {
-    console.log('error storing data locally', e);
+    //console.log('error storing data locally', e);
   }
 };
 
@@ -14,7 +14,7 @@ const getJobData = async () => {
     const jsonValue = await AsyncStorage.getItem('savedJobs');
     return jsonValue != null ? JSON.parse(jsonValue) : [];
   } catch (e) {
-    console.log('error getting local data', e);
+    //console.log('error getting local data', e);
     return 'error';
   }
 };
