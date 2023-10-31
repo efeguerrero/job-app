@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
 import axios from 'axios';
-import { RAPID_API_KEY } from '@env';
-const rapidApiKey = RAPID_API_KEY;
+
+const rapidApiKey = process.env.EXPO_PUBLIC_RAPID_API_KEY;
 
 //Dummy Data Import
 import dummyData from './dummyData.json';
