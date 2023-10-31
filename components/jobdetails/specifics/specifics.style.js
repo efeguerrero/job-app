@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: SIZES.large,
-    color: COLORS.primary,
+    color: COLORS.gray,
     fontFamily: FONT.bold,
   },
   pointsContainer: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   pointText: {
-    fontSize: SIZES.medium - 2,
+    fontSize: SIZES.medium,
     color: COLORS.gray,
     fontFamily: FONT.regular,
     marginLeft: SIZES.small,

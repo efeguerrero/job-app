@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
     borderWidth: 1,
-    borderColor: COLORS.gray2,
+    borderColor: COLORS.gray3,
   },
   tabText: {
     fontFamily: FONT.medium,

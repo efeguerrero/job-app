@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: SIZES.medium,
     paddingVertical: SIZES.large,
-    backgroundColor: COLORS.secondary,
+    backgroundColor: COLORS.white,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    tintColor: COLORS.secondary,
+    tintColor: COLORS.primary,
   },
   applyBtn: {
     height: 35,
     paddingHorizontal: 10,
-    backgroundColor: '#FE7654',
+    backgroundColor: COLORS.primary,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: SIZES.small,

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   btnText: (name, activeTab) => ({
     fontFamily: 'DMMedium',
     fontSize: SIZES.small,
-    color: name === activeTab ? '#C3BFCC' : '#AAA9B8',
+    color: name === activeTab ? COLORS.white : COLORS.gray2,
   }),
 });
 
