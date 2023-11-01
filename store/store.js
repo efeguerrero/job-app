@@ -30,13 +30,13 @@ const useJobStore = create((set) => ({
       };
       set(() => ({ isLoading: true }));
       try {
-        //const res = await axios.request(options);
+        const res = await axios.request(options);
         set(() => ({ jobsData: res.data.data }));
         set(() => ({ isLoading: false }));
       } catch (error) {
         //In case API has met it's quota or there was an error, you will see an alert that you will be seeing stale data just to showcase App
-        set({ isError: true });
         set(() => ({ jobsData: dummyData.data }));
+        set({ isError: true });
         //console.log(error);
       } finally {
         set(() => ({ isLoading: false }));
