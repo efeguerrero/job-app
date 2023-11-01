@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 //React Native Imports
 import { Text, View, SafeAreaView, ScrollView, Share } from 'react-native';
@@ -32,9 +32,13 @@ const JobDetails = () => {
   const jobsData = useJobStore((state) => state.jobsData);
   const savedJobs = useSavedJobsStore((state) => state.savedJobs);
   //The selected job detail we are looking for is either from jobsData (search result) or from saved jobs. So we check boths and use that.
-  const selectedJob =
-    jobsData.find((job) => job.job_id === params.id) ||
-    savedJobs.find((job) => job.job_id === params.id);
+  //We also memoize the value so that it nevery changes between renders unless params.id changes, meaning we are at a new job route.
+  const selectedJob = useMemo(
+    () =>
+      jobsData.find((job) => job.job_id === params.id) ||
+      savedJobs.find((job) => job.job_id === params.id),
+    [params.id]
+  );
   const setSavedJob = useSavedJobsStore((state) => state.setSavedJob);
   const removeSavedJob = useSavedJobsStore((state) => state.removeSavedJob);
 
