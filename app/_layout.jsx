@@ -31,7 +31,7 @@ const AppLayout = () => {
         // Artificially delay for two seconds to avoid snappy loading.
         //await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (error) {
-        console.log('there was an error', error);
+        //console.log('there was an error', error);
       } finally {
         setAppIsReady(true);
       }
@@ -48,7 +48,7 @@ const AppLayout = () => {
       // we hide the splash screen once we know the root view has already
       // performed layout.
       const hideRes = await SplashScreen.hideAsync();
-      console.log('hideRes', hideRes);
+      //console.log('hideRes', hideRes);
     }
   }, [appIsReady]);
 
