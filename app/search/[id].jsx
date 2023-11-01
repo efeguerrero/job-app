@@ -38,21 +38,17 @@ const Popularjobs = () => {
       [{ text: 'OK', onPress: () => setIsErrorFalse() }]
     );
 
-  const displayData = () => {
-    if (isLoading) {
-      return <ActivityIndicator size="large" colors={COLORS.primary} />;
+  const displayJobData = () => {
+    if (jobsData?.length) {
+      return jobsData?.map((job) => (
+        <JobCard
+          job={job}
+          key={`nearby-job-${job?.job_id}`}
+          handleNavigate={() => router.push(`/job-details/${job?.job_id}`)}
+        />
+      ));
     } else {
-      if (jobsData?.length) {
-        return jobsData?.map((job) => (
-          <JobCard
-            job={job}
-            key={`nearby-job-${job?.job_id}`}
-            handleNavigate={() => router.push(`/job-details/${job?.job_id}`)}
-          />
-        ));
-      } else {
-        return <Text>No results found for your search.</Text>;
-      }
+      return <Text>No results found for your search.</Text>;
     }
   };
 
@@ -84,7 +80,11 @@ const Popularjobs = () => {
 
         <View style={styles.jobContainer}>
           {isError && createAlert()}
-          {displayData()}
+          {isLoading ? (
+            <ActivityIndicator size="large" colors={COLORS.primary} />
+          ) : (
+            displayJobData()
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
