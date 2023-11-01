@@ -81,7 +81,7 @@ const Popularjobs = () => {
         <View style={styles.jobContainer}>
           {isError && createAlert()}
           {isLoading ? (
-            <ActivityIndicator size="large" colors={COLORS.primary} />
+            <ActivityIndicator size="large" color={COLORS.tertiary} />
           ) : (
             displayJobData()
           )}
