@@ -42,7 +42,6 @@ const Home = () => {
             <HeaderBtn
               icon={icons.bookmarkOutline}
               dimension="60%"
-              color={COLORS.gray}
               handlePress={() => router.push('/favorites/')}
             />
           ),
