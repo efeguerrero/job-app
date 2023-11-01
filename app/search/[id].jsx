@@ -28,14 +28,33 @@ const Popularjobs = () => {
   const jobsData = useJobStore((state) => state.jobsData);
   const isLoading = useJobStore((state) => state.isLoading);
   const isError = useJobStore((state) => state.isError);
+  const setIsErrorFalse = useJobStore((state) => state.setIsErrorFalse);
   const getJobData = useJobStore((state) => state.getJobData);
 
   const createAlert = () =>
     Alert.alert(
       'Error',
-      'There was an error retrieving the data. You will see stale jobs so that you can showcase the app anyway. Please try again later',
-      [{ text: 'OK', onPress: () => console.log('') }]
+      'There was an error retrieving the data. Either your search was invalid or there was a server error. You will see stale jobs so that you can showcase the app anyway. Please try again later',
+      [{ text: 'OK', onPress: () => setIsErrorFalse() }]
     );
+
+  const displayData = () => {
+    if (isLoading) {
+      return <ActivityIndicator size="large" colors={COLORS.primary} />;
+    } else {
+      if (jobsData?.length) {
+        return jobsData?.map((job) => (
+          <JobCard
+            job={job}
+            key={`nearby-job-${job?.job_id}`}
+            handleNavigate={() => router.push(`/job-details/${job?.job_id}`)}
+          />
+        ));
+      } else {
+        return <Text>No results found for your search.</Text>;
+      }
+    }
+  };
 
   useEffect(() => {
     getJobData(id);
@@ -65,19 +84,7 @@ const Popularjobs = () => {
 
         <View style={styles.jobContainer}>
           {isError && createAlert()}
-          {isLoading ? (
-            <ActivityIndicator size="large" colors={COLORS.primary} />
-          ) : (
-            jobsData?.map((job) => (
-              <JobCard
-                job={job}
-                key={`nearby-job-${job?.job_id}`}
-                handleNavigate={() =>
-                  router.push(`/job-details/${job?.job_id}`)
-                }
-              />
-            ))
-          )}
+          {displayData()}
         </View>
       </ScrollView>
     </SafeAreaView>

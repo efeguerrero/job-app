@@ -14,6 +14,7 @@ const useJobStore = create((set) => ({
   jobsData: [],
   isLoading: false,
   isError: false,
+  setIsErrorFalse: () => set({ isError: false }),
   getJobData: (query) =>
     set(async () => {
       const options = {
@@ -27,11 +28,9 @@ const useJobStore = create((set) => ({
           query: query,
         },
       };
-
       set(() => ({ isLoading: true }));
       try {
-        const res = await axios.request(options);
-
+        //const res = await axios.request(options);
         set(() => ({ jobsData: res.data.data }));
         set(() => ({ isLoading: false }));
       } catch (error) {
