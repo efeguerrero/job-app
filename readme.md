@@ -9,9 +9,9 @@ Job searching mobile application developed with React Native.
 - ![Zustand](https://img.shields.io/badge/-Zustand-0A1A2F?style=flat&logo=zustand) for State Management
 
 
-## To Install APK on Android
+## To Install APK on Android follow this link to Expo
 
-[![App](https://img.shields.io/badge/App-informational?style=for-the-badge&logo=netlify&logoColor=fff&color=23272d)](https://www.stefanosleather.com/)
+[![App](https://img.shields.io/badge/App-informational?style=for-the-badge&logo=netlify&logoColor=fff&color=23272d)]([https://www.stefanosleather.com/](https://expo.dev/accounts/franguerrero/projects/jobseek/builds/fdc6c605-2acb-4ebb-970b-dcf735494cc8))
 
 ## License
 
