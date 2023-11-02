@@ -7,10 +7,13 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { StatusBar } from 'expo-status-bar';
 
 //Constants
-import { COLORS, icons, SIZES, FONT } from '../constants';
+import { COLORS, icons } from '../constants';
 
 //Expo Router Imports
 import { useRouter } from 'expo-router';
+
+//Styles Import
+import styles from './main.styles';
 
 //Components Imports
 import { Welcome } from '../components';
@@ -22,7 +25,7 @@ const Home = () => {
   const headerHeight = useHeaderHeight();
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
       <Stack.Screen
         options={{
@@ -40,37 +43,18 @@ const Home = () => {
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          justifyContent: 'center',
-          height: '100%',
-        }}
+        contentContainerStyle={styles.container}
       >
-        <View
-          style={{
-            marginTop: -headerHeight + 16,
-            flex: 1,
-            padding: SIZES.medium,
-            justifyContent: 'center',
-          }}
-        >
+        <View style={styles.mainContainer(headerHeight)}>
           <Welcome />
         </View>
       </ScrollView>
-      <View
-        style={{
-          paddingVertical: 16,
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <View style={styles.creditsContainer}>
         <TouchableOpacity
           onPress={() => Linking.openURL('https://franguerrero.dev/')}
         >
-          <Text style={{ fontFamily: FONT.regular }}>
-            Developed by{' '}
-            <Text style={{ color: COLORS.tertiary }}>{`{fg}`}</Text>
+          <Text style={styles.creditText}>
+            Developed by <Text style={styles.creditTextStrong}>{`{fg}`}</Text>
           </Text>
         </TouchableOpacity>
       </View>

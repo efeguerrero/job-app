@@ -1,7 +1,7 @@
 import React from 'react';
 
 //React Native Imports
-import { ScrollView, View, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, SafeAreaView } from 'react-native';
 
 //Expo Imports
 import { Stack, useRouter } from 'expo-router';
@@ -13,8 +13,11 @@ import JobCard from '../../components/common/cards/JobCard';
 //Store Imports
 import { useSavedJobsStore } from '../../store/store';
 
+//Styles Imports
+import styles from './favorites.style';
+
 //Constant Imports
-import { COLORS, icons, FONT, SIZES } from '../../constants';
+import { COLORS, icons } from '../../constants';
 
 const Favorites = () => {
   const savedJobs = useSavedJobsStore((state) => state.savedJobs);
@@ -56,37 +59,5 @@ const Favorites = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-  container: {
-    padding: SIZES.medium,
-    backgroundColor: COLORS.lightWhite,
-  },
-  jobContainer: {
-    width: '100%',
-    display: 'flex',
-    gap: 16,
-    paddingVertical: 32,
-    paddingBottom: 64,
-  },
-  cardsContainer: {
-    marginTop: SIZES.medium,
-    gap: SIZES.small,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: SIZES.small,
-  },
-  headerTitle: {
-    fontSize: SIZES.large,
-    fontFamily: FONT.medium,
-    color: COLORS.primary,
-  },
-});
 
 export default Favorites;

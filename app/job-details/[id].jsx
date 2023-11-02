@@ -24,6 +24,9 @@ import { useJobStore, useSavedJobsStore } from '../../store/store';
 
 const tabs = ['About', 'Qualifications', 'Responsibilities'];
 
+//Style imports
+import styles from './jobDetails.style';
+
 const JobDetails = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const params = useLocalSearchParams();
@@ -95,7 +98,7 @@ const JobDetails = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    <SafeAreaView style={styles.safeArea}>
       <Stack.Screen
         options={{
           headerShadowVisible: false,

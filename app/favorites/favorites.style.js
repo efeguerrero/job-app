@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+//Constant Imports
 import { COLORS, FONT, SIZES } from '../../constants';
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
   },
-
   container: {
     padding: SIZES.medium,
     backgroundColor: COLORS.lightWhite,
@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
     paddingVertical: 32,
     paddingBottom: 64,
   },
+  cardsContainer: {
+    marginTop: SIZES.medium,
+    gap: SIZES.small,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -28,15 +32,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
     color: COLORS.primary,
-  },
-  headerBtn: {
-    fontSize: SIZES.medium,
-    fontFamily: FONT.medium,
-    color: COLORS.gray,
-  },
-  cardsContainer: {
-    marginTop: SIZES.medium,
-    gap: SIZES.small,
   },
 });
 

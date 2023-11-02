@@ -57,7 +57,7 @@ const Popularjobs = () => {
   }, [id]);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.safeArea}>
       <Stack.Screen
         options={{
           headerShadowVisible: false,
