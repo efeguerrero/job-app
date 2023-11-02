@@ -14,7 +14,7 @@ const JobCard = ({ job, handleNavigate }) => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigate}>
-      <TouchableOpacity style={styles.logoContainer}>
+      <View style={styles.logoContainer}>
         <Image
           style={styles.logoImage}
           source={{ uri: imageURL }}
@@ -25,7 +25,7 @@ const JobCard = ({ job, handleNavigate }) => {
             )
           }
         />
-      </TouchableOpacity>
+      </View>
 
       <View style={styles.textContainer}>
         <Text numberOfLines={1} style={styles.jobName}>
