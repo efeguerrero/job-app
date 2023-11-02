@@ -11,7 +11,7 @@ Job searching mobile application developed with React Native.
 
 ## To Install APK on Android follow this link to Expo
 
-[![App](https://img.shields.io/badge/App-informational?style=for-the-badge&logo=netlify&logoColor=fff&color=23272d)](https://expo.dev/accounts/franguerrero/projects/jobseek/builds/fdc6c605-2acb-4ebb-970b-dcf735494cc8)
+[![App](https://img.shields.io/badge/App-informational?style=for-the-badge&logo=netlify&logoColor=fff&color=23272d)](https://expo.dev/accounts/franguerrero/projects/jobseek/builds/6778108f-df3b-47ed-89ef-f003ec8413a8)
 
 ## License
 
