@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 import styles from './jobCard.style';
 
 const JobCard = ({ job, handleNavigate }) => {
-  const imageURL = job.employer_logo
-    ? job.employer_logo
-    : 'https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg';
+  const [imageURL, setImageURL] = useState(() =>
+    job.employer_logo
+      ? job.employer_logo
+      : 'https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg'
+  );
+
+  //We must have two fallbacks for images 1)for null images and the other one on the Image component for .svg that will throw out an error
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigate}>
@@ -15,6 +19,11 @@ const JobCard = ({ job, handleNavigate }) => {
           style={styles.logoImage}
           source={{ uri: imageURL }}
           resizeMode="contain"
+          onError={() =>
+            setImageURL(
+              'https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg'
+            )
+          }
         />
       </TouchableOpacity>
 
