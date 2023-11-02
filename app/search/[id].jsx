@@ -43,7 +43,7 @@ const Popularjobs = () => {
       return jobsData?.map((job) => (
         <JobCard
           job={job}
-          key={`nearby-job-${job?.job_id}`}
+          key={`job-${job?.job_id}`}
           handleNavigate={() => router.push(`/job-details/${job?.job_id}`)}
         />
       ));
