@@ -2,6 +2,13 @@
 
 Job searching mobile application developed with React Native.
 
+
+https://github.com/efeguerrero/job-app/assets/99802933/9ce99edc-cf71-49f8-8081-4018339759dc
+https://github.com/efeguerrero/job-app/assets/99802933/9730b8cb-4a11-4ca0-9e26-2ebcd7f55bb2
+https://github.com/efeguerrero/job-app/assets/99802933/1fdd32c7-70c3-4761-a75e-ed024e8c062f
+
+
+
 # Built With
 
 - ![React Native](https://img.shields.io/badge/-React-0A1A2F?style=flat&logo=react)
