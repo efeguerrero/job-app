@@ -2,10 +2,16 @@
   "build": {
     "preview": {
       "distribution": "internal",
-      "channel": "preview"
+      "channel": "preview",
+      "env": {
+        "EXPO_PUBLIC_RAPID_API_KEY": "32e2797fd3mshecad5c77fb809dap108036jsnc37e76a9ffe0"
+      }
     },
     "production": {
-      "channel": "production"
+      "channel": "production",
+      "env": {
+        "EXPO_PUBLIC_RAPID_API_KEY": "32e2797fd3mshecad5c77fb809dap108036jsnc37e76a9ffe0"
+      }
     }
   }
 }
