@@ -6,7 +6,7 @@ Job searching mobile application developed with React Native.
 
 - ![React Native](https://img.shields.io/badge/-React-0A1A2F?style=flat&logo=react)
 - ![Expo](https://img.shields.io/badge/-Expo-0A1A2F?style=flat&logo=expo)
-- ![Zustand](https://img.shields.io/badge/-Tailwind-0A1A2F?style=flat&logo=tailwindCSS) for State Management
+- ![Zustand](https://img.shields.io/badge/-Zustand-0A1A2F?style=flat&logo=zustand) for State Management
 
 
 ## To Install APK on Android
